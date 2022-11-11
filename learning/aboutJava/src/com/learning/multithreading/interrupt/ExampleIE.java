@@ -1,8 +1,12 @@
 package com.learning.multithreading.interrupt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 class ChildThread extends Thread {
+    private static final Logger log = LoggerFactory.getLogger(ChildThread.class);
     private volatile boolean isIncrement = true;
 
     public void changeSign() {
@@ -23,8 +27,8 @@ class ChildThread extends Thread {
             try {
                 SECONDS.sleep(6);
             } catch (InterruptedException e) {
-                System.out.println("\n" + e.getMessage());
-                return;
+                log.info("\n Thread is interrupted", e);
+                Thread.currentThread().interrupt();
             }
         }
     }
@@ -45,7 +49,7 @@ class ExampleIE {
         for (int i = 1; i <= 3; i++) {
             try {
                 SECONDS.sleep(i * 2);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
             childThread.changeSign();
         }
