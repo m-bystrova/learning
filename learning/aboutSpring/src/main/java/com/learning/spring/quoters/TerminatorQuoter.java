@@ -3,6 +3,7 @@ package com.learning.spring.quoters;
 
 import javax.annotation.PostConstruct;
 
+@Profiling
 public class TerminatorQuoter implements Quoter {
     @InjectRandomInt(min = 2, max = 7)
     private int repeat;
@@ -18,7 +19,6 @@ public class TerminatorQuoter implements Quoter {
         System.out.println("Phase 1");
     }
 
-    //обязателен для наст-ки через xml, если нет, для spring'а это не будет проперти, через refl-n попытается и упадет
     public void setMessage(String message) {
         this.message = message;
     }
