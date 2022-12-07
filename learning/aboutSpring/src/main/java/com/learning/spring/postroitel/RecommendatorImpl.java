@@ -2,7 +2,7 @@ package com.learning.spring.postroitel;
 
 public class RecommendatorImpl implements Recommendator {
 
-    @InjectProperty
+    @InjectProperty("wisky")
     private String alcohol;
 
     @Override
