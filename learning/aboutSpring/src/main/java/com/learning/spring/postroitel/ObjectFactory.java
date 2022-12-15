@@ -2,6 +2,9 @@ package com.learning.spring.postroitel;
 
 import lombok.SneakyThrows;
 
+import javax.annotation.PostConstruct;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +24,30 @@ public class ObjectFactory {
 
     @SneakyThrows
     public <T> T createObject(Class<T> implClass) {
-        T t = implClass.getDeclaredConstructor().newInstance();
+        T t = create(implClass); //тут вызывается конст-ор
 
-        //даем возможность настроить объект. тк настраивается 1 раз, то норм, что все будут
+        configure(t);//даем возможность настроить объект. тк настраивается 1 раз, то норм, что все будут
+
+        invokeMethod(implClass, t); //фабрика дергает конст-ор
+
+        return t; //возр-ет донастроенный объект
+    }
+
+    private <T> void invokeMethod(Class<T> implClass, T t) throws IllegalAccessException, InvocationTargetException {
+        for (Method method : implClass.getMethods()) {
+            if(method.isAnnotationPresent(PostConstruct.class)){
+                method.invoke(t);
+            }
+        }
+    }
+
+    private <T> void configure(T t) {
         configurators.forEach(objectConfigurator -> objectConfigurator.configure(t, context));
-        return t;
+    }
+
+    private <T> T create(Class<T> implClass)
+        throws InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException
+    {
+        return implClass.getDeclaredConstructor().newInstance();
     }
 }

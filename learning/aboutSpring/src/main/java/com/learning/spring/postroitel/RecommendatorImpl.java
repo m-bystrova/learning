@@ -1,6 +1,6 @@
 package com.learning.spring.postroitel;
 
-//@Singleton
+@Singleton
 public class RecommendatorImpl implements Recommendator {
 
     @InjectProperty("wisky")
