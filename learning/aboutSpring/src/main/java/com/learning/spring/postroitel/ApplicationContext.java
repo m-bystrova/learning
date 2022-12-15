@@ -1,12 +1,14 @@
 package com.learning.spring.postroitel;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ApplicationContext {
 
+    @Setter
     private ObjectFactory factory;
     private Map<Class, Object> cache = new HashMap<>();
     @Getter
@@ -29,6 +31,7 @@ public class ApplicationContext {
         T t = factory.createObject(implClass);
 
         if(implClass.isAnnotationPresent(Singleton.class)){
+            //кладем объект, к-ый уже создан
             cache.put(type, t);
         }
 

@@ -7,18 +7,11 @@ import java.util.List;
 
 public class ObjectFactory {
 
-    private static ObjectFactory ourInstance = new ObjectFactory();
     private final ApplicationContext context;
     private List<ObjectConfigurator> configurators = new ArrayList<>();
 
-    public static ObjectFactory getInstance() {
-        return ourInstance;
-    }
-
     @SneakyThrows
     public ObjectFactory(ApplicationContext context) {
-//        config = new JavaConfig("com.learning.spring.postroitel", new HashMap<>(Map.of(Policeman.class, AngryPoliceman.class)));
-
         this.context = context;
         //скаринурем пакет, чтобы найти все конфигураторы
         for (Class<? extends ObjectConfigurator> aClass : context.getConfig().getScanner().getSubTypesOf(ObjectConfigurator.class)) {
