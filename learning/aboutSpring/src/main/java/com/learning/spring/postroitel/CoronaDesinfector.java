@@ -1,5 +1,6 @@
 package com.learning.spring.postroitel;
 
+@Deprecated
 public class CoronaDesinfector {
 
     @InjectByType
