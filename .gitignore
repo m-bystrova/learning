@@ -1,0 +1,15 @@
+.idea
+
+*.iml
+target/
+!target/generated-sources/
+/*.err
+/*.log
+/build
+/classes
+/log
+/out
+/outgoing/
+/out.txt
+/var
+/.project
