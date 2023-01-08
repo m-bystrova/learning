@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class PetTest {
     ClassPathXmlApplicationContext context;
@@ -45,5 +46,38 @@ public class PetTest {
         Person person = context.getBean("myPerson", Person.class);
         assertEquals(person.getSurname(), "Surname");
         assertEquals(person.getAge(), 1);
+    }
+
+    @Test
+    public void testBeanScopeSingleton() {
+        System.out.println(" ");
+        context = new ClassPathXmlApplicationContext("stepikBeanScope.xml");
+
+        Dog myDog = context.getBean("myPet", Dog.class);
+        myDog.setName("myDog");
+
+        Dog yourDog = context.getBean("myPet", Dog.class);
+        yourDog.setName("yourDog");
+
+        assertEquals(myDog, yourDog);
+        assertEquals(myDog.getName(), yourDog.getName());
+        assertEquals(myDog.getName(),"yourDog");
+
+    }
+
+    @Test
+    public void testBeanScopePrototype() {
+        System.out.println(" ");
+        context = new ClassPathXmlApplicationContext("stepikBeanScope.xml");
+
+        Cat myCat = context.getBean("myPetCat", Cat.class);
+        myCat.setName("myCat");
+
+        Cat yourCat = context.getBean("myPetCat", Cat.class);
+        yourCat.setName("yourCat");
+
+        assertNotEquals(myCat, yourCat);
+        assertEquals(myCat.getName(),"myCat");
+        assertEquals(yourCat.getName(),"yourCat");
     }
 }
