@@ -1,21 +1,21 @@
 package com.learning.spring.stepik.intro;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Person {
+    private static final Logger log = LoggerFactory.getLogger(Person.class);
 
     private Pet pet;
     private String surname;
     private int age;
 
-//    public Person(Pet pet) {
-//        this.pet = pet;
-//    }
-
     public Person() {
-        System.out.println("Person bean is created");
+        log.info("Person bean is created");
     }
 
     public void setPet(Pet pet) {
-        System.out.println("Class Person: set pet");
+        log.info("Class Person: set pet");
         this.pet = pet;
     }
 
@@ -24,7 +24,7 @@ public class Person {
     }
 
     public void setSurname(String surname) {
-        System.out.println("Class Person: set surname");
+        log.info("Class Person: set surname");
         this.surname = surname;
     }
 
@@ -33,7 +33,7 @@ public class Person {
     }
 
     public void setAge(int age) {
-        System.out.println("Class Person: set age");
+        log.info("Class Person: set age");
         this.age = age;
     }
 

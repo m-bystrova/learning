@@ -22,7 +22,7 @@ public class PetTest {
     }
 
     @Test
-    public void testDogSay() {
+    public void testPetsSay() {
         Pet dog = new Dog();
         Pet cat = new Cat();
         assertEquals("wow", dog.say());
@@ -50,7 +50,6 @@ public class PetTest {
 
     @Test
     public void testBeanScopeSingleton() {
-        System.out.println(" ");
         context = new ClassPathXmlApplicationContext("stepikBeanScope.xml");
 
         Dog myDog = context.getBean("myPet", Dog.class);
@@ -61,13 +60,11 @@ public class PetTest {
 
         assertEquals(myDog, yourDog);
         assertEquals(myDog.getName(), yourDog.getName());
-        assertEquals(myDog.getName(),"yourDog");
-
+        assertEquals(myDog.getName(), "yourDog");
     }
 
     @Test
     public void testBeanScopePrototype() {
-        System.out.println(" ");
         context = new ClassPathXmlApplicationContext("stepikBeanScope.xml");
 
         Cat myCat = context.getBean("myPetCat", Cat.class);
@@ -77,7 +74,7 @@ public class PetTest {
         yourCat.setName("yourCat");
 
         assertNotEquals(myCat, yourCat);
-        assertEquals(myCat.getName(),"myCat");
-        assertEquals(yourCat.getName(),"yourCat");
+        assertEquals(myCat.getName(), "myCat");
+        assertEquals(yourCat.getName(), "yourCat");
     }
 }
