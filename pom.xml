@@ -11,7 +11,6 @@
     <modules>
         <module>aboutSpring</module>
         <module>aboutJava</module>
-        <module>test</module>
     </modules>
 
     <properties>
