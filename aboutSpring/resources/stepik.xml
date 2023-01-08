@@ -9,7 +9,7 @@
 
     <bean id = "myPerson"
           class="com.learning.spring.stepik.intro.Person">
-          <constructor-arg ref="myPet"/>
+            <property name="pet" ref="myPet"/>
     </bean>
 
 </beans>
