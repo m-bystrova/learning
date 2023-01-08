@@ -39,4 +39,11 @@ public class PetTest {
         Person person = context.getBean("myPerson", Person.class);
         assertEquals("Hi, my pet \nwow", person.callYourPet());
     }
+
+    @Test
+    public void testFieldsFromPerson() {
+        Person person = context.getBean("myPerson", Person.class);
+        assertEquals(person.getSurname(), "Surname");
+        assertEquals(person.getAge(), 1);
+    }
 }
