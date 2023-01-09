@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.learning</groupId>
-    <artifactId>learning-multi-module</artifactId>
+    <artifactId>learning</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>aboutSpring</module>
-        <module>aboutJava</module>
+        <module>spring</module>
+        <module>java</module>
     </modules>
 
     <properties>
