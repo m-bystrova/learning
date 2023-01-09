@@ -4,14 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     
     <bean id="myPet"
-          class="com.learning.spring.stepik.intro.Dog"
+          class="learning.spring.stepik.intro.Dog"
           scope="singleton"
           init-method="init"
           destroy-method="destroy">
     </bean>
 
     <bean id="myPetCat"
-          class="com.learning.spring.stepik.intro.Cat"
+          class="learning.spring.stepik.intro.Cat"
           scope="prototype"
           init-method="init"
           destroy-method="destroy">

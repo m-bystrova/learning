@@ -6,12 +6,12 @@
 
     <context:property-placeholder location="classpath:stepik.properties"/>
     <bean id="myPet"
-          class="com.learning.spring.stepik.intro.Dog"
+          class="learning.spring.stepik.intro.Dog"
           scope="prototype">
     </bean>
 
     <bean id="myPerson"
-          class="com.learning.spring.stepik.intro.Person"
+          class="learning.spring.stepik.intro.Person"
           scope="prototype">
         <property name="pet" ref="myPet"/>
 
