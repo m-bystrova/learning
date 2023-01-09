@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class Person {
     private static final Logger log = LoggerFactory.getLogger(Person.class);
 
+    @Autowired
     private Pet pet;
     private String surname;
     private int age;
@@ -23,7 +24,7 @@ public class Person {
         log.info("Person bean is created");
     }
 
-    @Autowired
+//    @Autowired
     public void setPet(Pet pet) {
         log.info("Class Person: set pet");
         this.pet = pet;
