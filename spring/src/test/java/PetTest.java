@@ -83,7 +83,11 @@ public class PetTest {
     @Test
     public void testConfigurationWithAnnotation() {
         context = new ClassPathXmlApplicationContext("stepikScan.xml");
-        Cat catBean = context.getBean("cat", Cat.class);
+
+        Cat catBean = context.getBean("catBean", Cat.class);
         assertEquals("mouw", catBean.say());
+
+        Person personBean = context.getBean("personBean", Person.class);
+        assertEquals("Hi, my pet \nmouw", personBean.callYourPet());
     }
 }

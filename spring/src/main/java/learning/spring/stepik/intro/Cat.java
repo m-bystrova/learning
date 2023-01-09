@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("catBean")
 public class Cat implements Pet {
     private static final Logger log = LoggerFactory.getLogger(Cat.class);
 
