@@ -13,16 +13,17 @@ public class Person {
     private String surname;
     private int age;
 
-    @Autowired //todo: how in our prs, if one constructor we add annotation?
-    public Person(Pet pet) {
-        log.info("Person bean is created");
-        this.pet = pet;
-    }
-
-    //    public Person() {
+//    @Autowired //todo: how in our prs, if one constructor we add annotation?
+//    public Person(Pet pet) {
 //        log.info("Person bean is created");
+//        this.pet = pet;
 //    }
 
+        public Person() {
+        log.info("Person bean is created");
+    }
+
+    @Autowired
     public void setPet(Pet pet) {
         log.info("Class Person: set pet");
         this.pet = pet;
