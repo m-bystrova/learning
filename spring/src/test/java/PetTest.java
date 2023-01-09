@@ -90,4 +90,13 @@ public class PetTest {
         Person personBean = context.getBean("personBean", Person.class);
         assertEquals("Hi, my pet \nmouw", personBean.callYourPet());
     }
+
+    @Test
+    public void testAnnotationValue() {
+        context = new ClassPathXmlApplicationContext("stepikScan.xml");
+
+        Person personBean = context.getBean("personBean", Person.class);
+        assertEquals(personBean.getSurname(), "Surname");
+        assertEquals(personBean.getAge(), 1);
+    }
 }
