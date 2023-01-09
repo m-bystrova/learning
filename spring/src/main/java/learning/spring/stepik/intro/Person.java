@@ -3,6 +3,7 @@ package learning.spring.stepik.intro;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("personBean")
@@ -10,12 +11,13 @@ public class Person {
     private static final Logger log = LoggerFactory.getLogger(Person.class);
 
     @Autowired
+    @Qualifier("catBean")
     private Pet pet;
     private String surname;
     private int age;
 
 //    @Autowired //todo: how in our prs, if one constructor we add annotation?
-//    public Person(Pet pet) {
+//    public Person(@Qualifier("catBean") Pet pet) {
 //        log.info("Person bean is created");
 //        this.pet = pet;
 //    }
