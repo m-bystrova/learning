@@ -79,4 +79,24 @@ public class PetTest {
         assertEquals(myCat.getName(), "myCat");
         assertEquals(yourCat.getName(), "yourCat");
     }
+
+    @Test
+    public void testConfigurationWithAnnotation() {
+        context = new ClassPathXmlApplicationContext("stepikScan.xml");
+
+        Cat catBean = context.getBean("catBean", Cat.class);
+        assertEquals("mouw", catBean.say());
+
+        Person personBean = context.getBean("personBean", Person.class);
+        assertEquals("Hi, my pet \nmouw", personBean.callYourPet());
+    }
+
+    @Test
+    public void testAnnotationValue() {
+        context = new ClassPathXmlApplicationContext("stepikScan.xml");
+
+        Person personBean = context.getBean("personBean", Person.class);
+        assertEquals(personBean.getSurname(), "Surname");
+        assertEquals(personBean.getAge(), 1);
+    }
 }
