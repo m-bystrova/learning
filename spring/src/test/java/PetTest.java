@@ -27,20 +27,20 @@ public class PetTest {
     public void testPetsSay() {
         Pet dog = new Dog();
         Pet cat = new Cat();
-        assertEquals("wow", dog.say());
-        assertEquals("mouw", cat.say());
+        assertEquals(dog.say(), "wow");
+        assertEquals(cat.say(), "mouw");
     }
 
     @Test
     public void testConfigWithXml() {
         Pet pet = context.getBean("myPet", Pet.class);
-        assertEquals("wow", pet.say());
+        assertEquals(pet.say(), "wow");
     }
 
     @Test
     public void testPerson() {
         Person person = context.getBean("myPerson", Person.class);
-        assertEquals("Hi, my pet \nwow", person.callYourPet());
+        assertEquals(person.callYourPet(), "Hi, my pet \nwow");
     }
 
     @Test
@@ -78,5 +78,25 @@ public class PetTest {
         assertNotEquals(myCat, yourCat);
         assertEquals(myCat.getName(), "myCat");
         assertEquals(yourCat.getName(), "yourCat");
+    }
+
+    @Test
+    public void testConfigurationWithAnnotation() {
+        context = new ClassPathXmlApplicationContext("stepikScan.xml");
+
+        Cat catBean = context.getBean("catBean", Cat.class);
+        assertEquals(catBean.say(), "mouw");
+
+        Person personBean = context.getBean("personBean", Person.class);
+        assertEquals(personBean.callYourPet(), "Hi, my pet \nmouw");
+    }
+
+    @Test
+    public void testAnnotationValue() {
+        context = new ClassPathXmlApplicationContext("stepikScan.xml");
+
+        Person personBean = context.getBean("personBean", Person.class);
+        assertEquals(personBean.getSurname(), "Surname");
+        assertEquals(personBean.getAge(), 1);
     }
 }
