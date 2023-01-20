@@ -19,7 +19,7 @@ public class Person {
     @Value("${person.age}")
     private int age;
 
-//    @Autowired //todo: how in our prs, if one constructor we add annotation?
+//    @Autowired
 //    public Person(@Qualifier("catBean") Pet pet) {
 //        log.info("Person bean is created");
 //        this.pet = pet;

@@ -27,20 +27,20 @@ public class PetTest {
     public void testPetsSay() {
         Pet dog = new Dog();
         Pet cat = new Cat();
-        assertEquals("wow", dog.say());
-        assertEquals("mouw", cat.say());
+        assertEquals(dog.say(), "wow");
+        assertEquals(cat.say(), "mouw");
     }
 
     @Test
     public void testConfigWithXml() {
         Pet pet = context.getBean("myPet", Pet.class);
-        assertEquals("wow", pet.say());
+        assertEquals(pet.say(), "wow");
     }
 
     @Test
     public void testPerson() {
         Person person = context.getBean("myPerson", Person.class);
-        assertEquals("Hi, my pet \nwow", person.callYourPet());
+        assertEquals(person.callYourPet(), "Hi, my pet \nwow");
     }
 
     @Test
@@ -85,10 +85,10 @@ public class PetTest {
         context = new ClassPathXmlApplicationContext("stepikScan.xml");
 
         Cat catBean = context.getBean("catBean", Cat.class);
-        assertEquals("mouw", catBean.say());
+        assertEquals(catBean.say(), "mouw");
 
         Person personBean = context.getBean("personBean", Person.class);
-        assertEquals("Hi, my pet \nmouw", personBean.callYourPet());
+        assertEquals(personBean.callYourPet(), "Hi, my pet \nmouw");
     }
 
     @Test
