@@ -11,8 +11,13 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
     private static final Logger log = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Before("execution(public void getBook())") //pointCut
+    @Before("execution(public void learning.spring.stepik.aop.UniLibrary.get*())") //pointCut, '*' can use for return type
     public void beforeGetBookAdvice() {
         log.info("beforeGetBookAdvice: trying get book");
+    }
+
+    @Before("execution(* *())")
+    public void beforeGetAny() {
+        log.info("before any method");
     }
 }
