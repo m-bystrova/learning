@@ -10,6 +10,10 @@ public class UniLibrary extends AbstractLibrary {
         System.out.println("take from uni lib");
     }
 
+    public void getBook(Book bookName) {
+        System.out.println("take: " + bookName.getName());
+    }
+
     public void getMagazine() {
         System.out.println("take magazine from uni lib");
     }
