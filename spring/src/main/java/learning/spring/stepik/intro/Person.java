@@ -4,23 +4,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component("personBean")
+@Component("person")
 public class Person {
     private static final Logger log = LoggerFactory.getLogger(Person.class);
 
     @Autowired
-    @Qualifier("catBean")
+    @Qualifier("cat")
     private Pet pet;
-    @Value("${person.surname}")
+//    @Value("${person.surname}")
     private String surname;
-    @Value("${person.age}")
+//    @Value("${person.age}")
     private int age;
 
 //    @Autowired
-//    public Person(@Qualifier("catBean") Pet pet) {
+//    public Person(@Qualifier("cat") Pet pet) {
 //        log.info("Person bean is created");
 //        this.pet = pet;
 //    }

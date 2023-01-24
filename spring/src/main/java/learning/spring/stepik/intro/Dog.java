@@ -4,7 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component("dogBean")
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component("dog")
 public class Dog implements Pet {
     private static final Logger log = LoggerFactory.getLogger(Dog.class);
 
@@ -27,10 +30,12 @@ public class Dog implements Pet {
         return "wow";
     }
 
+    @PostConstruct
     public void init() { //todo: why access modifier can be anything?
         log.info("Class Dog: init method");
     }
 
+    @PreDestroy
     public void destroy() {
         log.info("Class Dog: destroy method");
     }
