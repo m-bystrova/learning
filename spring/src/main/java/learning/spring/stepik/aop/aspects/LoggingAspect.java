@@ -14,21 +14,21 @@ public class LoggingAspect {
     @Before("execution(public void learning.spring.stepik.aop.UniLibrary.get*())")
     //pointCut, '*' can use for return type, param, access modifier
     public void beforeGetBookAdvice() {
-        log.info("beforeGetBookAdvice: trying get book");
+        log.info("try get book from UniLibrary");
     }
 
     @Before("execution(public void get*(String))")
     public void beforeGetBookByName() {
-        log.info("beforeGetBookAdvice: trying get book by Name");
+        log.info("try get book by String");
     }
 
     @Before("execution(public void get*(learning.spring.stepik.aop.Book, ..))")
     public void beforeGetBookByBookName() {
-        log.info("beforeGetBookAdvice: trying get book by Book Name");
+        log.info("try get book by Book");
     }
 
-    @Before("execution(* *())") // (*) - 1 param, (..) - any
+    @Before("execution(* *(..))") // (*) - 1 param, (..) - any
     public void beforeGetAny() {
-        log.info("before any method");
+        log.info("pointcut for any method");
     }
 }

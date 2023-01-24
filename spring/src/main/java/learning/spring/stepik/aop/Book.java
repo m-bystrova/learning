@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Book {
 
-    @Value("name for book")
+    @Value("Book")
     private String name;
 
     public String getName(){

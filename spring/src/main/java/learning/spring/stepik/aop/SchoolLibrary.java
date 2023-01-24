@@ -9,4 +9,8 @@ public class SchoolLibrary extends AbstractLibrary{
     public void getBook() {
         System.out.println("take from school lib");
     }
+
+    public void getBook(String bookName) {
+        System.out.println("take: " + bookName);
+    }
 }
