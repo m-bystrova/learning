@@ -125,4 +125,15 @@ public class PetTest {
 
         applicationContext.close();
     }
+
+    @Test
+    public void testConfigBeanWithMethod(){
+        AnnotationConfigApplicationContext applicationContext =
+            new AnnotationConfigApplicationContext(StepikConfig.class);
+
+        Person person = applicationContext.getBean("getPerson", Person.class);
+        assertEquals("Hi, my pet \nmouw", person.callYourPet());
+
+        applicationContext.close();
+    }
 }
