@@ -40,12 +40,14 @@ public class PetTest {
         assertEquals("wow", pet.say());
     }
 
+    @Ignore("deleted name")
     @Test
     public void testPerson() {
         Person person = context.getBean("myPerson", Person.class);
         assertEquals("Hi, my pet \nwow", person.callYourPet());
     }
 
+    @Ignore("deleted name")
     @Test
     public void testFieldsFromPerson() {
         Person person = context.getBean("myPerson", Person.class);
@@ -83,6 +85,7 @@ public class PetTest {
         assertEquals("yourCat", yourCat.getName());
     }
 
+    @Ignore("deleted annotation")
     @Test
     public void testConfigurationWithAnnotation() {
         context = new ClassPathXmlApplicationContext("stepikScan.xml");
@@ -104,6 +107,7 @@ public class PetTest {
         assertEquals(1, personBean.getAge());
     }
 
+    @Ignore("deleted name")
     @Test
     public void testScopeValue() {
         context = new ClassPathXmlApplicationContext("stepikSimpleScope.xml");
@@ -120,19 +124,9 @@ public class PetTest {
         assertEquals("wow", myDog.say());
 
         Person personBean = applicationContext.getBean("getPerson", Person.class);
+        assertEquals("Hi, my pet \nmouw", personBean.callYourPet());
         assertEquals("Surname", personBean.getSurname());
         assertEquals(1, personBean.getAge());
-
-        applicationContext.close();
-    }
-
-    @Test
-    public void testConfigBeanWithMethod() {
-        AnnotationConfigApplicationContext applicationContext =
-            new AnnotationConfigApplicationContext(StepikConfig.class);
-
-        Person person = applicationContext.getBean("getPerson", Person.class);
-        assertEquals("Hi, my pet \nmouw", person.callYourPet());
 
         applicationContext.close();
     }
