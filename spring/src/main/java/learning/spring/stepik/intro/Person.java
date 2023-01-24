@@ -2,17 +2,18 @@ package learning.spring.stepik.intro;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 //@Component("person")
 public class Person {
     private static final Logger log = LoggerFactory.getLogger(Person.class);
 
-//    @Autowired
-//    @Qualifier("cat")
+    //    @Autowired
+    //    @Qualifier("cat")
     private Pet pet;
-    //    @Value("${person.surname}")
+    @Value("${person.surname}")
     private String surname;
-    //    @Value("${person.age}")
+    @Value("${person.age}")
     private int age;
 
     //    @Autowired
@@ -21,9 +22,9 @@ public class Person {
         this.pet = pet;
     }
 
-//    public Person() {
-//        log.info("Person bean is created");
-//    }
+    //    public Person() {
+    //        log.info("Person bean is created");
+    //    }
 
     //    @Autowired
     public void setPet(Pet pet) {

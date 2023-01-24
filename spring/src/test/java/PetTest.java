@@ -116,10 +116,10 @@ public class PetTest {
     public void testAnnotationContext() {
         AnnotationConfigApplicationContext applicationContext =
             new AnnotationConfigApplicationContext(StepikConfig.class);
-        Dog myDog = applicationContext.getBean("dog", Dog.class);
+        Dog myDog = applicationContext.getBean("getDog", Dog.class);
         assertEquals("wow", myDog.say());
 
-        Person personBean = applicationContext.getBean("person", Person.class);
+        Person personBean = applicationContext.getBean("getPerson", Person.class);
         assertEquals("Surname", personBean.getSurname());
         assertEquals(1, personBean.getAge());
 
@@ -127,7 +127,7 @@ public class PetTest {
     }
 
     @Test
-    public void testConfigBeanWithMethod(){
+    public void testConfigBeanWithMethod() {
         AnnotationConfigApplicationContext applicationContext =
             new AnnotationConfigApplicationContext(StepikConfig.class);
 
