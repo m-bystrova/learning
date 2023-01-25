@@ -2,9 +2,12 @@ import learning.spring.stepik.intro.Cat;
 import learning.spring.stepik.intro.Dog;
 import learning.spring.stepik.intro.Person;
 import learning.spring.stepik.intro.Pet;
+import learning.spring.stepik.intro.StepikConfig;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import static org.junit.Assert.assertEquals;
@@ -27,27 +30,29 @@ public class PetTest {
     public void testPetsSay() {
         Pet dog = new Dog();
         Pet cat = new Cat();
-        assertEquals(dog.say(), "wow");
-        assertEquals(cat.say(), "mouw");
+        assertEquals("wow", dog.say());
+        assertEquals("mouw", cat.say());
     }
 
     @Test
     public void testConfigWithXml() {
         Pet pet = context.getBean("myPet", Pet.class);
-        assertEquals(pet.say(), "wow");
+        assertEquals("wow", pet.say());
     }
 
+    @Ignore("deleted name")
     @Test
     public void testPerson() {
         Person person = context.getBean("myPerson", Person.class);
-        assertEquals(person.callYourPet(), "Hi, my pet \nwow");
+        assertEquals("Hi, my pet \nwow", person.callYourPet());
     }
 
+    @Ignore("deleted name")
     @Test
     public void testFieldsFromPerson() {
         Person person = context.getBean("myPerson", Person.class);
-        assertEquals(person.getSurname(), "Surname");
-        assertEquals(person.getAge(), 1);
+        assertEquals("Surname", person.getSurname());
+        assertEquals(1, person.getAge());
     }
 
     @Test
@@ -62,7 +67,7 @@ public class PetTest {
 
         assertEquals(myDog, yourDog);
         assertEquals(myDog.getName(), yourDog.getName());
-        assertEquals(myDog.getName(), "yourDog");
+        assertEquals("yourDog", myDog.getName());
     }
 
     @Test
@@ -76,27 +81,53 @@ public class PetTest {
         yourCat.setName("yourCat");
 
         assertNotEquals(myCat, yourCat);
-        assertEquals(myCat.getName(), "myCat");
-        assertEquals(yourCat.getName(), "yourCat");
+        assertEquals("myCat", myCat.getName());
+        assertEquals("yourCat", yourCat.getName());
     }
 
+    @Ignore("deleted annotation")
     @Test
     public void testConfigurationWithAnnotation() {
         context = new ClassPathXmlApplicationContext("stepikScan.xml");
 
-        Cat catBean = context.getBean("catBean", Cat.class);
-        assertEquals(catBean.say(), "mouw");
+        Cat catBean = context.getBean("cat", Cat.class);
+        assertEquals("mouw", catBean.say());
 
-        Person personBean = context.getBean("personBean", Person.class);
-        assertEquals(personBean.callYourPet(), "Hi, my pet \nmouw");
+        Person personBean = context.getBean("person", Person.class);
+        assertEquals("Hi, my pet \nmouw", personBean.callYourPet());
     }
 
+    @Ignore("commented @Value")
     @Test
     public void testAnnotationValue() {
         context = new ClassPathXmlApplicationContext("stepikScan.xml");
 
-        Person personBean = context.getBean("personBean", Person.class);
-        assertEquals(personBean.getSurname(), "Surname");
-        assertEquals(personBean.getAge(), 1);
+        Person personBean = context.getBean("person", Person.class);
+        assertEquals("Surname", personBean.getSurname());
+        assertEquals(1, personBean.getAge());
+    }
+
+    @Ignore("deleted name")
+    @Test
+    public void testScopeValue() {
+        context = new ClassPathXmlApplicationContext("stepikSimpleScope.xml");
+
+        Dog myDog = context.getBean("dog", Dog.class);
+        assertEquals("wow", myDog.say());
+    }
+
+    @Test
+    public void testAnnotationContext() {
+        AnnotationConfigApplicationContext applicationContext =
+            new AnnotationConfigApplicationContext(StepikConfig.class);
+        Dog myDog = applicationContext.getBean("getDog", Dog.class);
+        assertEquals("wow", myDog.say());
+
+        Person personBean = applicationContext.getBean("getPerson", Person.class);
+        assertEquals("Hi, my pet \nmouw", personBean.callYourPet());
+        assertEquals("Surname", personBean.getSurname());
+        assertEquals(1, personBean.getAge());
+
+        applicationContext.close();
     }
 }

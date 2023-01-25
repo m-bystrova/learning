@@ -2,34 +2,31 @@ package learning.spring.stepik.intro;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component("personBean")
+//@Component("person")
 public class Person {
     private static final Logger log = LoggerFactory.getLogger(Person.class);
 
-    @Autowired
-    @Qualifier("catBean")
+    //    @Autowired
+    //    @Qualifier("cat")
     private Pet pet;
     @Value("${person.surname}")
     private String surname;
     @Value("${person.age}")
     private int age;
 
-//    @Autowired
-//    public Person(@Qualifier("catBean") Pet pet) {
-//        log.info("Person bean is created");
-//        this.pet = pet;
-//    }
-
-        public Person() {
+    //    @Autowired
+    public Person(Pet pet) {
         log.info("Person bean is created");
+        this.pet = pet;
     }
 
-//    @Autowired
+    //    public Person() {
+    //        log.info("Person bean is created");
+    //    }
+
+    //    @Autowired
     public void setPet(Pet pet) {
         log.info("Class Person: set pet");
         this.pet = pet;
@@ -53,7 +50,7 @@ public class Person {
         this.age = age;
     }
 
-    public String callYourPet(){
+    public String callYourPet() {
         return "Hi, my pet \n" + pet.say();
     }
 }
