@@ -1,6 +1,6 @@
 package learning.spring.stepik.externaltask.threebeans;
 
-public interface I {
+public interface Abracadabra {
 
     void executeSomeMethod();
 }

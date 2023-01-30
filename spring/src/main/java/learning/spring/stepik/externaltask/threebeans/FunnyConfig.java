@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("learning.spring.stepik.externaltask.threebeans")
-public class ABXYConfig {
+public class FunnyConfig {
 }
